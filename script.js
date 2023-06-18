@@ -3,6 +3,10 @@ const todoList = document.getElementById('todo-list');
 
 todoForm.addEventListener('submit', addTodo);
 
+/**
+* Adds a new todo item to the list.
+* @param {Event} event - The submit event triggered by the form submission.
+*/
 function addTodo (event) {
     event.preventDefault();
 
@@ -42,11 +46,17 @@ function addTodo (event) {
     urgencyInput.selectedIndex = 0;
 }
 
+/**
+ * Deletes a todo item from the list.
+ */
 function deleteTodo() {
     const todoItem = this.parentNode;
     todoList.removeChild(todoItem);
 }
 
+/**
+ * Edits the title of a todo item.
+ */
 function editTodo() {
     const todoItem = this.parentNode;
     const todoDetails = todoItem.querySelector('.todo-details');
@@ -61,6 +71,11 @@ function editTodo() {
     }
 }
 
+/**
+ * Checks if a todo item with the same title already exists in the list.
+ * @param {string} title - The title of the todo item to check.
+ * @returns {boolean} - A boolean indicating whether a duplicate title exists.
+ */
 function isDuplicateTitle(title) {
     const todoItems = todoList.getElementsByTagName('li');
     for (let i = 0; i < todoItems.length; i++) {
